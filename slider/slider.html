@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+         
+        }
+        .contain{
+            height: 300px;
+            width: 100%;
+            position: relative;
+
+        }
+        ul li.slieder{
+            height: 300px;
+            width: 100%;
+            position: absolute;
+            display: none;
+        }
+        
+    
+        .slieder img{
+
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            animation: animate 4s ease-in-out infinite;
+        }
+        @keyframes animate{
+            0%{
+                
+                background: url("img.jpg");
+            }
+            25%{
+                background: url("img2.jpg");
+            }
+            50%{
+                background: url("img3.jpg");
+            }
+            75%{
+                background: url("img.jpg");
+            }
+        }
+        .s{
+            cursor: pointer;
+            position:absolute;
+            font-size: 18px;
+            top:45%;
+            color: rgba(0, 0, 0, 0.546);
+            background: rgba(255, 255, 255, 0.486);
+            padding: 8px 15px;
+            border-radius: 50%;
+            
+        }
+        .left{
+            left: 10px;
+        }
+        .right{
+            right: 10px;
+           
+        }
+        .caption{
+            color:aliceblue;
+            bottom: 30%;
+            background: rgba(0, 0, 0, 0);
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <ul>
+        <li class="slieder">
+            <img src="img.jpg" alt=""><p class="caption">this is a caption 1</p>
+              </li >
+        <li class="slieder">
+            <img src="img2.jpeg" alt=""><p class="caption">this is a caption 2</p>
+        </li>       
+         <li class="slieder">
+            <img src="img3.jpg" alt=""><p class="caption">this is a caption 3</p>
+        </li >
+        <li class="slieder">
+            <img src="img2.jpeg" alt=""><p class="caption">this is a caption 4</p>
+        </li >
+
+        </ul>
+     <span class="s left" onclick="control(-1)">&#10094;</span>
+     <span class="s right" onclick="control(1)">&#10095;</span>
+    </div>
+
+
+
+
+       
+    <script> 
+        let image=0;
+
+     
+
+
+        function control(x){
+           image=image + x;
+
+            slider(image);
+
+        }
+
+      
+        slider(image);
+        function slider(no){
+
+            var slider_class=document.getElementsByClassName("slieder");
+            
+            
+
+            if(no == slider_class.length){
+                image=0;
+                no=0;
+                   
+            }
+            else if(no < 0){
+                image=slider_class.length-1;
+                no=slider_class.length-1;
+            }
+
+            for(let y of slider_class){
+                y.style.display="none";
+            }
+            slider_class[no].style.display="block";
+
+        }
+
+        // swiped-left
+
+// swiped-right
+// slider_class.addEventListener('swiped-right', function(e) {
+//   // ...
+// });
+// // swiped-up
+// slider_class.addEventListener('swiped-up', function(e) {
+//   // ...
+// });
+// // swiped-down
+// slider_class.addEventListener('swiped-down', function(e) {
+//   // ...
+ 
+    </script>
+</body>
+</html>
